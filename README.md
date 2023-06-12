@@ -54,6 +54,8 @@ Create a JSON file to match the folder structure you desire
 
 ## Contributing
 
+Big Thanks to [Link-](https://github.com/Link-) for jump starting the project.
+
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
