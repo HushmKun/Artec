@@ -1,20 +1,22 @@
 # PyBoiler
-PyBoiler is a simple python 2.7 script to create a project template in a given directory.
 
-### Version
+PyBoiler is a simple python 3 script to create a project template in a given directory.
 
-    alpha-0.3.0
+## Installation
+*This is a patched solution*
 
-### Installation
+Clone the repo locally and run __init__.py 
 
-	pip install pyboiler
 
-### Usage
-PyBoiler is extremely simple to use. 
 
-##### Create a JSON file to match the folder structure you desire:
+```bash
+git clone https://github.com/HushmKun/PyBoiler
+```
 
-    $: nano structure.json 
+## Usage
+Create a JSON file to match the folder structure you desire
+```
+    $: vim structure.json 
     
     # Paste the below into your file and modify as you desire
 	[{'folder': 'source'}, 
@@ -25,9 +27,9 @@ PyBoiler is extremely simple to use.
      {'file': 'docs/file3.txt'}, 
      {'file': 'docs/file4.txt'},
      {'file': 'README.md'}]
-
-##### How to execute
-
+```
+ How to execute
+```
 	usage: pyboiler.py [-h] -o PROJECT_PATH
 
 	required arguments:
@@ -42,34 +44,21 @@ PyBoiler is extremely simple to use.
                 JSON file containing the template folder/file
                 structure to be created
 
-Note: If the argument `-i` is not specified the script will use the default template (hardcoded) 
+    Examples :
+            python src/__init__.py -o dest
+            python src/__init__.py -o dest -s res/simple.json
+```
+## Version
 
-### Change Log
-### alpha-0.3.0
-* Input file argument changed to `-s` instead of `-i`
-* Temporarily removed jparser.py in order to make room for further serializers in future releases (XML, yaml etc...)
-* Code refactoring and cleanup
+    alpha-0.1.0
 
-#### alpha-0.2.0
-* Folder and File structure template can be imported from a JSON file
-* Added jparser.py to parse and validate the JSON file
+## Contributing
 
-### Tests
-This script has been tests on Mac OS X 10.9.4 only. There is no guarantee it will perform as expected on other Operating Systems.
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-### LICENSE
+Please make sure to update tests as appropriate.
 
-	DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+## License
 
-			Version 2, December 2004
-
-	Copyright (C) 2014 Bassem Dghaidi <bd@bassemdy.com>
-
-	Everyone is permitted to copy and distribute verbatim or modified
-	copies of this license document, and changing it is allowed as long
-	as the name is changed.
-
-		DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-		TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
-	0. You just DO WHAT THE FUCK YOU WANT TO.
+[GNU GPLv3.0](https://choosealicense.com/licenses/gpl-3.0/)

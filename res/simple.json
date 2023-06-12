@@ -1,5 +1,6 @@
 [{"folder": "source"},
-{"folder": "sublime"},
+{"folder": "res"},
 {"folder": "docs"},
 {"file": "README.md"},
-{"folder": "hello-baby"}]
+{"file": "LICENSE"},
+{"file": "CHANGELOG"}]
