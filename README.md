@@ -3,16 +3,17 @@
 PyBoiler is a simple python 3 script to create a project template in a given directory.
 
 ## Installation
-*This is a patched solution*
 
-Clone the repo locally and run __init__.py 
+
+Clone the repo locally and  
 
 
 
 ```bash
-git clone https://github.com/HushmKun/PyBoiler
+$ cd pyboiler
+$ pip install . 
 ```
-
+*Soon will be available for PYPI.*
 ## Usage
 Create a JSON file to match the folder structure you desire
 ```
@@ -30,7 +31,7 @@ Create a JSON file to match the folder structure you desire
 ```
  How to execute
 ```
-	usage: pyboiler.py [-h] -o PROJECT_PATH
+	usage: pyboiler [-h] -o PROJECT_PATH
 
 	required arguments:
   		-o PROJECT_PATH, --project-directory PROJECT_PATH 
@@ -45,12 +46,12 @@ Create a JSON file to match the folder structure you desire
                 structure to be created
 
     Examples :
-            python src/__init__.py -o dest
-            python src/__init__.py -o dest -s res/simple.json
+            pyboiler -o dest
+            pyboiler -o dest -s res/simple.json
 ```
 ## Version
 
-    alpha-0.1.0
+    0.0.1
 
 ## Contributing
 
