@@ -8,8 +8,7 @@ import os
 
 
 class boiler_builder:
-	def __init__(self, source=None, target=None, override=None) -> None:
-		self.override = override
+	def __init__(self, source=None, target=None) -> None:
 		self.structure = self._source(source)
 		self.target = target
 
@@ -22,17 +21,13 @@ class boiler_builder:
 					
 		except:
 			structure = DEFAULT_FOLDER_STRUCTURE
-			exit("> Fatal error - cannot parse the provided JSON files: %s" % source)
 
 		finally:
 			return structure
 
 	def build(self):
 		print(
-			"> {} folder structure: {}\n".format(
-				"Overriding" if self.override else "Creating", self.target
-			)
-		)
+			"> Creating folder structure: {}\n".format(self.target))
 
 		for entry in self.structure:
 			for _type, name in entry.items():
