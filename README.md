@@ -5,16 +5,17 @@ _It's a maintained version of PyBoiler_
 
 ## Installation
 
+Download from pip 
 
-Clone the repo locally and  
+```bash
+pip install artec
+```
 
-
-
+or Install manually
 ```bash
 $ cd Artec
 $ pip install . 
 ```
-*Soon will be available for PYPI.*
 ## Usage
 Create a JSON file to match the folder structure you desire
 ```
