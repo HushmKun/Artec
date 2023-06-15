@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Artec",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/artec/__main__.py",
+            "args": [
+                "-o",
+                "fake",
+                "-i",
+            ],
+        },
+    ]
+}
