@@ -1,4 +1,4 @@
-import context
+
 import unittest
 from artec import argparser
 
@@ -15,3 +15,6 @@ class ParserTest(unittest.TestCase):
         parsed = self.parser.parse_args(['-o', '/dir/r', '-s', '/dir/s'])
         self.assertEqual(parsed.source, '/dir/s')
 
+    def test_arg_interactive(self):
+        parsed = self.parser.parse_args(['-o', '/dir/r' , '-i'])
+        self.assertTrue(parsed.tui)

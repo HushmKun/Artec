@@ -8,8 +8,7 @@ class Parser(ArgumentParser):
 	def __init__(self):
 		prog = "Artec"
 		usage = "artec [OPTIONS] -o [DEST] "
-		description = "Artec is a simple python 3 script to create \
-		a project template in a given directory."
+		description = "Artec is a simple python 3 script to create a project template in a given directory."
 		epilog = """Examples : \n\tpython src/__init__.py -o dest\n\tpython src/__init__.py -o dest -s res/simple.json"""
 		super().__init__(prog, usage, description, epilog,formatter_class=RawTextHelpFormatter)
 
@@ -32,6 +31,15 @@ class Parser(ArgumentParser):
 			required=False,
 		)
 
+		# ! Not Implemented Yet. 
+		self.add_argument(
+			"-i",
+			"--interactive",
+			dest="tui",
+			help="Runs Artec in interactive mode.",
+			action='store_true',
+			required=False,
+		)
 		
 
 def main_args() -> Namespace :

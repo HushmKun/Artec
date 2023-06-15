@@ -8,7 +8,7 @@ import os
 
 
 class boiler_builder:
-	def __init__(self, source=None, target=None) -> None:
+	def __init__(self, source=None, target=None , tui=False) -> None: #! TUI is not implemented yet.
 		self.structure = self._source(source)
 		self.target = target
 

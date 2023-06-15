@@ -1,4 +1,3 @@
-import context
 import unittest
 from shutil import rmtree
 from artec import boiler 
