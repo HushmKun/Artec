@@ -1,6 +1,6 @@
 import context
 import unittest
-from pyboiler import argparser
+from artec import argparser
 
 class ParserTest(unittest.TestCase):
     def setUp(self):

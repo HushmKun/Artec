@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyboiler"
+name = "artec"
 version = "0.0.1"
 authors = [
   { name="HushmKun", email="HushmKun@outlook.com" },
@@ -21,8 +21,8 @@ classifiers = [
       ]
 
 [project.urls]
-"Homepage" = "https://github.com/HushmKun/pyboiler"
-"Bug Tracker" = "https://github.com/HushmKun/pyboiler/issues"
+"Homepage" = "https://github.com/HushmKun/Artec"
+"Bug Tracker" = "https://github.com/HushmKun/Artec/issues"
 
 [project.scripts]
-pyboiler = "pyboiler.__main__:main"
+artec = "artec.__main__:main"

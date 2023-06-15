@@ -1,6 +1,7 @@
-# PyBoiler
+# Artec
 
-PyBoiler is a simple python 3 script to create a project template in a given directory.
+Artec is a simple python 3 script to create a project template in a given directory.<br>
+_It's a maintained version of PyBoiler_
 
 ## Installation
 
@@ -10,7 +11,7 @@ Clone the repo locally and
 
 
 ```bash
-$ cd pyboiler
+$ cd Artec
 $ pip install . 
 ```
 *Soon will be available for PYPI.*
@@ -31,7 +32,7 @@ Create a JSON file to match the folder structure you desire
 ```
  How to execute
 ```
-	usage: pyboiler [-h] -o PROJECT_PATH
+	usage: artec [-h] -o PROJECT_PATH
 
 	required arguments:
   		-o PROJECT_PATH, --project-directory PROJECT_PATH 
@@ -46,8 +47,8 @@ Create a JSON file to match the folder structure you desire
                 structure to be created
 
     Examples :
-            pyboiler -o dest
-            pyboiler -o dest -s res/simple.json
+            artec -o dest
+            artec -o dest -s res/simple.json
 ```
 ## Version
 

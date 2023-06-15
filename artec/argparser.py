@@ -6,9 +6,9 @@ from argparse import ArgumentParser, Namespace, RawTextHelpFormatter
 
 class Parser(ArgumentParser):
 	def __init__(self):
-		prog = "PyBoiler"
-		usage = "pyboiler [OPTIONS] -o [DEST] "
-		description = "PyBoiler is a simple python 3 script to create \
+		prog = "Artec"
+		usage = "artec [OPTIONS] -o [DEST] "
+		description = "Artec is a simple python 3 script to create \
 		a project template in a given directory."
 		epilog = """Examples : \n\tpython src/__init__.py -o dest\n\tpython src/__init__.py -o dest -s res/simple.json"""
 		super().__init__(prog, usage, description, epilog,formatter_class=RawTextHelpFormatter)

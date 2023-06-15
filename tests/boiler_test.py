@@ -1,7 +1,7 @@
 import context
 import unittest
 from shutil import rmtree
-from pyboiler import boiler 
+from artec import boiler 
 
 class BoilerTest(unittest.TestCase):
     def setUp(self):
