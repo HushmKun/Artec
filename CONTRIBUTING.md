@@ -106,7 +106,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/HushmK
 
 
 ### Your First Code Contribution
-I have provided the .vscode folder that has configuration of the [tests](.vscode\settings.json) & [launch](.vscode\launch.json)  
+I have provided the .vscode folder that has configuration of the [tests](.vscode/settings.json) & [launch](.vscode/launch.json)  
 
 ## Styleguides
 Tools to keep the Style : 
