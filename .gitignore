@@ -1,6 +1,7 @@
 # Development files 
 __main__.py
-**\tui.py
+tui.py
+exceptions.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

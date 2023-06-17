@@ -53,7 +53,7 @@ Create a JSON file to match the folder structure you desire
 ```
 ## Version
 
-    0.1.2
+    0.1.3
 
 ## Contributing
 

@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Artec",
+            "name": "Artec : Json & verbose",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/artec/__main__.py",
@@ -10,7 +10,7 @@
                 "-o",
                 "fake",
                 "-s",
-                "artec",
+                "src.json",
                 "-v",
             ],
         },

@@ -2,7 +2,6 @@
 	Main module core.
 	#3 Step
 """
-import codecs
 import json
 import os
 
@@ -17,8 +16,7 @@ class boiler_builder:
     def _source(self, source) -> list[dict[str, str]]:
         try:
             if os.path.isfile(source):
-                """Handle UTF-8 Files"""
-                with codecs.open(source, "rU", "utf-8") as file_data:
+                with open(source, "rt", encoding="utf-8") as file_data:
                     structure = json.load(file_data)
             else : 
                 raise Exception()
