@@ -29,8 +29,9 @@ class boiler_builder:
                 print("> No Source Provided.")
             
             elif (self.verbose) and not os.path.isfile(source):
-                print("> Provided Source isn't a JSON File")
+                print("> Provided Source isn't a file.")
                 
+            print("> Reverting to default structure.")
             structure = DEFAULT_FOLDER_STRUCTURE
         return structure
 
