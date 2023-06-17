@@ -56,7 +56,8 @@ Examples:
 
 ## Contributing
 
-Big Thanks to [Link-](https://github.com/Link-) for jump starting the project.
+* Big Thanks to [Link-](https://github.com/Link-) for jump starting the project.
+* Thanks for [Narayandas Akhil Achary](https://github.com/0018akhil) for solving the ```-s``` [bug](https://github.com/HushmKun/Artec/issues/4).
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
