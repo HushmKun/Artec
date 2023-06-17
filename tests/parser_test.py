@@ -18,3 +18,7 @@ class ParserTest(unittest.TestCase):
     def test_arg_interactive(self):
         parsed = self.parser.parse_args(["-o", "/dir/r", "-i"])
         self.assertTrue(parsed.tui)
+
+    def test_arg_verbose(self):
+        parsed = self.parser.parse_args(["-o", "/dir/r", "-v"])
+        self.assertTrue(parsed.verbose)

@@ -9,9 +9,10 @@ import os
 
 class boiler_builder:
     #! TUI is not implemented yet.
-    def __init__(self, source=None, target=None, tui=False) -> None:
-        self.structure = self._source(source)
+    def __init__(self, source=None, target=None, tui=False, verbose=False) -> None:
+        self.verbose = verbose
         self.target = target
+        self.structure = self._source(source)
 
     def _source(self, source) -> list[dict[str, str]]:
         try:
@@ -19,14 +20,19 @@ class boiler_builder:
                 """Handle UTF-8 Files"""
                 with codecs.open(source, "rU", "utf-8") as file_data:
                     structure = json.load(file_data)
+            else : 
+                raise Exception()
             # TODO : What if it's a directory ?  
+    
+        except :
+            if (source is None) and (self.verbose) :
+                print("> No Source Provided.")
             
-
-        except:
+            elif (self.verbose) and not os.path.isfile(source):
+                print("> Provided Source isn't a JSON File")
+                
             structure = DEFAULT_FOLDER_STRUCTURE
-
-        finally:
-            return structure
+        return structure
 
     def build(self):
         print("> Creating folder structure: {}\n".format(self.target))

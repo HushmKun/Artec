@@ -43,6 +43,14 @@ class Parser(ArgumentParser):
             required=False,
         )
 
+        self.add_argument(
+            "-v",
+            "--verbose",
+            dest="verbose",
+            help="Runs Artec in verbose mode.",
+            action="store_true",
+            required=False,
+        )
 
 def main_args() -> Namespace:
     parser = Parser()
