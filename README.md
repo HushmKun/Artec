@@ -19,37 +19,36 @@ $ pip install .
 ## Usage
 Create a JSON file to match the folder structure you desire
 ```
-    $: vim structure.json 
+$ vim structure.json 
     
-    # Paste the below into your file and modify as you desire
-	[{'folder': 'source'}, 
-     {'file': 'source/file1.txt'}, # Nested file
-     {'folder': 'sublime'}, 
-     {'file': 'sublime/file2.txt'}, 
-     {'folder': 'docs'}, 
-     {'file': 'docs/file3.txt'}, 
-     {'file': 'docs/file4.txt'},
-     {'file': 'README.md'}]
+# Paste the below into your file and modify as you desire
+[{'folder': 'source'}, 
+{'file': 'source/file1.txt'}, # Nested file
+{'folder': 'sublime'}, 
+{'file': 'sublime/file2.txt'}, 
+{'folder': 'docs'}, 
+{'file': 'docs/file3.txt'}, 
+{'file': 'docs/file4.txt'},
+{'file': 'README.md'}]
 ```
  How to execute
 ```
-	usage: artec [-h] -o PROJECT_PATH
+usage: artec [OPTIONS] -o [DEST] 
 
-	required arguments:
-  		-o PROJECT_PATH, --project-directory PROJECT_PATH 
-  				Project's absolute path where the structure will be created  		
-                        	
-    optional arguments:
-      	-h, --help 	
-      			Show this help message and exit
-      			
-        -s FOLDER_STRUCTURE, --folder-structure FOLDER_STRUCTURE
-                JSON file containing the template folder/file
-                structure to be created
+Artec is a simple python 3 script to create a project template in a given directory.
 
-    Examples :
-            artec -o dest
-            artec -o dest -s res/simple.json
+options:
+  -h, --help            show this help message and exit
+  -o TARGET, --output-directory TARGET
+                        Target output path where the structure will be created
+  -s SOURCE, --source-file SOURCE
+                        Source JSON file containing structure to be created
+  -i, --interactive     Runs Artec in interactive mode.
+  -v, --verbose         Runs Artec in verbose mode.
+
+Examples:
+        artec -o dest
+        artec -o dest -s structure.json
 ```
 ## Version
 
