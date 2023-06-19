@@ -5,8 +5,7 @@ from argparse import ArgumentParser, Namespace, RawTextHelpFormatter
 
 
 class Parser(ArgumentParser):
-    def __init__(self, appName, appVersion):
-        self.appName = appName
+    def __init__(self, appVersion):
         self.appVersion = appVersion
         prog = "Artec"
         usage = "artec [OPTIONS] -o [DEST] "
@@ -59,11 +58,11 @@ class Parser(ArgumentParser):
             "--version",
             help="Display current version of Artec",
             action="version",
-            version=f"{self.appName} {self.appVersion}"
+            version=f"{self.prog} {self.appVersion}"
         )
 
-def main_args(appName, appVersion) -> Namespace:
-    parser = Parser(appName, appVersion)
+def main_args(appVersion) -> Namespace:
+    parser = Parser(appVersion)
     parser.setup()
     return parser.parse_args()
 

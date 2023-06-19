@@ -3,7 +3,7 @@ from artec import argparser
 
 class ParserTest(unittest.TestCase):
     def setUp(self):
-        self.parser = argparser.Parser("AppName", "AppVersion")
+        self.parser = argparser.Parser("AppVersion")
         self.parser.setup()
 
     def test_arg_target(self):

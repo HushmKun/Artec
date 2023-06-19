@@ -8,7 +8,7 @@ __desc__ = "Creates a configurable python project \
 
 
 def main():
-    args = main_args(__app_name__, __version__)
+    args = main_args(__version__)
 
     builder = boiler_builder(args.source, args.target,args.verbose)
 
