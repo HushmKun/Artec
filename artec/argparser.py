@@ -5,7 +5,8 @@ from argparse import ArgumentParser, Namespace, RawTextHelpFormatter
 
 
 class Parser(ArgumentParser):
-    def __init__(self):
+    def __init__(self, appVersion):
+        self.appVersion = appVersion
         prog = "Artec"
         usage = "artec [OPTIONS] -o [DEST] "
         description = "Artec is a simple python 3 script to create a project template in a given directory."
@@ -52,8 +53,16 @@ class Parser(ArgumentParser):
             required=False,
         )
 
-def main_args() -> Namespace:
-    parser = Parser()
+        self.add_argument(
+            "-V",
+            "--version",
+            help="Display current version of Artec",
+            action="version",
+            version=f"{self.prog} {self.appVersion}"
+        )
+
+def main_args(appVersion) -> Namespace:
+    parser = Parser(appVersion)
     parser.setup()
     return parser.parse_args()
 
