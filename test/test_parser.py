@@ -4,7 +4,7 @@ from artec import argparser
 
 class ParserTest(unittest.TestCase):
     def setUp(self):
-        self.parser = argparser.Parser()
+        self.parser = argparser.Parser("appVersion")
         self.parser.setup()
 
     def test_arg_target(self):
