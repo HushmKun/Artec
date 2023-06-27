@@ -45,6 +45,7 @@ options:
                         Source JSON file containing structure to be created
   -i, --interactive     Runs Artec in interactive mode.
   -v, --verbose         Runs Artec in verbose mode.
+  -V, --version         Display current version of Artec
 
 Examples:
         artec -o dest
@@ -57,7 +58,7 @@ Examples:
 ## Contributing
 
 * Big Thanks to [Link-](https://github.com/Link-) for jump starting the project.
-* Thanks for [Narayandas Akhil Achary](https://github.com/0018akhil) for solving the ```-s``` [bug](https://github.com/HushmKun/Artec/issues/4).
+* Thanks for [Narayandas Akhil Achary](https://github.com/0018akhil) for various fixes & features.
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.

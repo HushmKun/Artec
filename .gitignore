@@ -1,7 +1,5 @@
 # Development files 
-__main__.py
 tui.py
-exceptions.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -63,3 +61,4 @@ target/
 
 # pyenv
 .python-version
+venv/

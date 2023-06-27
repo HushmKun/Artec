@@ -33,6 +33,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -  Improved error 
 
+### Fixed
+
+- Fixed Issue [#8](https://github.com/HushmKun/Artec/issues/8)
+
 ## [0.1.3] - 2023-06-20
 
 ### Added

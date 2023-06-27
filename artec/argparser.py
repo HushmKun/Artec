@@ -33,6 +33,14 @@ class Parser(ArgumentParser):
             required=False,
         )
 
+        self.add_argument(
+            "-t",
+            "--template",
+            dest="template",
+            help="Uses ready-made templates.",
+            required=False,
+        )
+
         # ! Not Implemented Yet.
         self.add_argument(
             "-i",

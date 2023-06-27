@@ -4,32 +4,30 @@
 """
 import json
 import os
-
-
+from pathlib import Path
+from .exceptions import NotJsonFile, NotValidJson, NoSource
 class boiler_builder:
     #! TUI is not implemented yet.
-    def __init__(self, source=None, target=None, tui=False, verbose=False) -> None:
+    def __init__(self, source=None, target=None, verbose=False, template=None, tui=False) -> None:
         self.verbose = verbose
         self.target = target
-        self.structure = self._source(source)
+        self.template = template    
+        if self.template is None :
+            self.structure = self._source(source)
 
     def _source(self, source) -> list[dict[str, str]]:
         try:
-            if os.path.isfile(source):
+            if os.path.isfile(source) and source.endswith('.json'):
                 with open(source, "rt", encoding="utf-8") as file_data:
                     structure = json.load(file_data)
             else : 
-                raise Exception()
-            # TODO : What if it's a directory ?  
+                raise NotJsonFile(self.verbose)
     
-        except :
-            if (source is None) and (self.verbose) :
-                print("> No Source Provided.")
+        except Exception as e :
             
-            elif (self.verbose) and not os.path.isfile(source):
-                print("> Provided Source isn't a file.")
-                
-            print("> Reverting to default structure.")
+            if not hasattr(e,"errno") : 
+                NoSource()                
+
             structure = DEFAULT_FOLDER_STRUCTURE
         return structure
 
@@ -39,30 +37,30 @@ class boiler_builder:
         for entry in self.structure:
             for _type, name in entry.items():
                 try:
-                    joined = os.path.join(self.target, name)
+                    joined = os.path.join(self.target, Path(name))
                     if _type == "folder":
                         self._make_folder(joined)
                     elif _type == "file":
                         self._make_file(joined)
+                    else : 
+                        raise NotValidJson(self.verbose)
                     print("Created: %s" % joined)
-                except OSError:
+                except Exception:
                     exit("> Fatal error - exiting...")
-
+                
     def _make_file(self, path):
         """Create an empty file in a given directory"""
         open(path, "a").close()
 
     def _make_folder(self, path):
         """Create an empty directory"""
-        if not os.path.exists(path):
-            os.makedirs(path)
-
+        os.makedirs(path, exist_ok=True)
 
 DEFAULT_FOLDER_STRUCTURE = [
     {"folder": "src"},
-    {"folder": "src\\__init__.py"},
-    {"folder": "tests"},
-    {"folder": "tests\\__init__.py"},
+    {"file": "src/__init__.py"},
+    {"folder": "test"},
+    {"file": "test/__init__.py"},
     {"folder": "res"},
     {"file": "README.md"},
     {"file": "setup.py"},

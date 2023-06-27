@@ -2,17 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Artec : Json & verbose",
+            "name": "Python: Module",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/artec/__main__.py",
+            "module": "artec",
             "args": [
                 "-o",
-                "fake",
-                "-s",
-                "src.json",
-                "-v",
+                "fake22",
+                // "-s",
+                // "src.json",
+                "--verbose",
             ],
+            "justMyCode": true
         },
     ]
 }

@@ -10,7 +10,7 @@ __desc__ = "Creates a configurable python project \
 def main():
     args = main_args()
 
-    builder = boiler_builder(args.source, args.target,args.verbose)
+    builder = boiler_builder(args.source, args.target,args.verbose, args.template, args.tui)
 
     builder.build()
 
