@@ -9,8 +9,8 @@
             "args": [
                 "-o",
                 "fake22",
-                // "-s",
-                // "src.json",
+                "-s",
+                "src.json",
                 "--verbose",
             ],
             "justMyCode": true

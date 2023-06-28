@@ -37,7 +37,7 @@ class boiler_builder:
         for entry in self.structure:
             for _type, name in entry.items():
                 try:
-                    joined = os.path.join(self.target, Path(name))
+                    joined = Path(os.path.join(self.target, name))
                     if _type == "folder":
                         self._make_folder(joined)
                     elif _type == "file":
@@ -50,6 +50,7 @@ class boiler_builder:
                 
     def _make_file(self, path):
         """Create an empty file in a given directory"""
+        path.parent.mkdir(parents=True, exist_ok=True)
         open(path, "a").close()
 
     def _make_folder(self, path):
