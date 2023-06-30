@@ -7,5 +7,11 @@
         "./test",
         "-p",
         "test_*.py"
+    ],
+    "cSpell.words": [
+        "Achary",
+        "Akhil",
+        "argparser",
+        "Narayandas"
     ]
 }

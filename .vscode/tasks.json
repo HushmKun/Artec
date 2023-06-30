@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Lint using flake8",
+            "type": "shell",
+            "command": "flake8 artec --ignore=E101,W191"
+        },
+        {
+            "label": "Format using black",
+            "type": "shell",
+            "command": "black artec"
+        },
+    ]
+}

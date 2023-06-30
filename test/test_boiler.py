@@ -16,10 +16,10 @@ def enablePrint():
 
 class BoilerTest(unittest.TestCase):
     def setUp(self):
+        blockPrint()
         self.boiler = boiler.boiler_builder(target="fake")
 
     def test_default_structure(self):
-        blockPrint()
         self.boiler.build()
         enablePrint()
 
