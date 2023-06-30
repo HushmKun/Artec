@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Artec"
-version = "0.2.0-alpha"
+version = "0.2.0-rc1"
 authors = [
   { name="HushmKun", email="HushmKun@outlook.com" },
   { name="Link-", email="bsm.dgdy@gmail.com" },
