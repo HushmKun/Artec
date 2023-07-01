@@ -1,13 +1,9 @@
 class static_list(list):
-    def __init__(self, iterable):
-        super().__init__(iterable)
-
     def format(self, name):
         for _ in self:
             for i, j in _.items():
                 _[i] = j.format(name)
         return self
-
 
 PYTHON_PACKAGE = static_list(
     [
@@ -24,5 +20,7 @@ PYTHON_PACKAGE = static_list(
 )
 
 templates = {
-    "python": PYTHON_PACKAGE
+    "python": PYTHON_PACKAGE,
+    "node.js": None,
+    "web": None,
 }

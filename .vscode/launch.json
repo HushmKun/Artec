@@ -7,11 +7,7 @@
             "request": "launch",
             "module": "artec",
             "args": [
-                "-o",
-                "fake22",
-                "-s",
-                "src.json",
-                "--verbose",
+                "-ls"
             ],
             "justMyCode": true
         },

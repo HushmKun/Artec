@@ -8,7 +8,7 @@ _It's a maintained version of PyBoiler_
 Download from pip 
 
 ```bash
-pip install artec
+pip install -i https://test.pypi.org/simple/ Artec==0.2.0rc1
 ```
 
 or Install manually
@@ -57,7 +57,7 @@ Examples:
 ```
 ## Version
 
-    0.2.0-rc1
+    0.2.0-rc2
 
 ## Contributing
 
