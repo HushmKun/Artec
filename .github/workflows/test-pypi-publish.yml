@@ -71,11 +71,11 @@ jobs:
         with:
           path: ~/dist
           key: ${{ runner.os }}-build
+      - run: ls -a ~/dist
       - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          verbose: true
           password: ${{ secrets.TEST_PYPI_API }}
           repository-url: https://test.pypi.org/legacy/
-          packages-dir: ~/dist
+          packages_dir: ~/dist
 
