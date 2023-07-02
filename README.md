@@ -57,7 +57,7 @@ Examples:
 ```
 ## Version
 
-    0.2.0-rc2
+    0.2.0-rc3
 
 ## Contributing
 
