@@ -52,7 +52,7 @@ jobs:
         --outdir ~/dist/
         .
     - name: Cache Builds
-      uses: actions/cache@v2
+      uses: actions/cache/save@v3
       with:
         path: ~/dist
         key: ${{ runner.os }}-build
@@ -67,7 +67,7 @@ jobs:
     steps:
       - name: Restore Builds
         id: cache-builds
-        uses: actions/cache@v2
+        uses: actions/cache/restore@v3
         with:
           path: ~/dist
           key: ${{ runner.os }}-build
