@@ -49,32 +49,27 @@ jobs:
         build
         --sdist
         --wheel
-        --outdir ~/dist/
+        --outdir dist/
         .
-    - name: Cache Builds
-      uses: actions/cache@v2
+    - name: Upload Builds
+      uses: actions/upload-artifact@v2
       with:
-        path: ~/dist
-        key: ${{ runner.os }}-build
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+        name: build
+        path: |
+          dist/
+          Artec.egg-info/
+        if-no-files-found: error
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Restore Builds
-        id: cache-builds
-        uses: actions/cache@v2
+      - uses: actions/download-artifact@v2
         with:
-          path: ~/dist
-          key: ${{ runner.os }}-build
+          name: build
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API }}
-          packages-dir: ~/dist/
 
 
