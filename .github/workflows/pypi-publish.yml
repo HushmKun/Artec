@@ -54,7 +54,7 @@ jobs:
     - name: Cache Builds
       uses: actions/cache@v2
       with:
-        path: ~/dist/
+        path: ~/dist
         key: ${{ runner.os }}-build
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -69,7 +69,7 @@ jobs:
         id: cache-builds
         uses: actions/cache@v2
         with:
-          path: ~/dist/
+          path: ~/dist
           key: ${{ runner.os }}-build
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
