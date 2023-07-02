@@ -51,15 +51,11 @@ jobs:
         --wheel
         --outdir ~/dist/
         .
-    - name: Cache Builds
-      uses: actions/cache/save@v3
+    - name: Upload Builds
+      uses: actions/upload-artifact@v2
       with:
-        path: ~/dist
-        key: ${{ runner.os }}-build
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+        name: build
+        path: dist/
 
   deploy:
     needs: build
@@ -71,8 +67,9 @@ jobs:
         with:
           path: ~/dist
           key: ${{ runner.os }}-build
-      - run: ls -a ~/dist
-      - run: pwd
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
       - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
