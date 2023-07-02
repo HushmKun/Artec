@@ -49,24 +49,21 @@ jobs:
         build
         --sdist
         --wheel
-        --outdir ~/dist/
+        --outdir dist/
         .
     - name: Upload Builds
       uses: actions/upload-artifact@v2
       with:
         name: build
-        path: dist/
+        path: |
+          dist/
+          Artec.egg-info/
+        if-no-files-found: error
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Restore Builds
-        id: cache-builds
-        uses: actions/cache/restore@v3
-        with:
-          path: ~/dist
-          key: ${{ runner.os }}-build
       - uses: actions/download-artifact@v2
         with:
           name: build
