@@ -2,7 +2,7 @@ from .argparser import main_args
 from .boiler import boiler_builder
 
 __app_name__ = "Artec"
-__version__ = "0.1.4"
+__version__ = "0.2.0"
 __desc__ = "Creates a configurable python project \
     template in a given directory."
 
@@ -10,7 +10,7 @@ __desc__ = "Creates a configurable python project \
 def main():
     args = main_args(__version__)
 
-    builder = boiler_builder(args.source, args.target,args.verbose, args.template, args.tui)
+    builder = boiler_builder(args.source, args.target, args.verbose, args.template)
 
     builder.build()
 

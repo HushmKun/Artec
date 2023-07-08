@@ -5,30 +5,44 @@
 import json
 import os
 from pathlib import Path
-from .exceptions import NotJsonFile, NotValidJson, NoSource
+from .exceptions import NotJsonFile, NotValidJson, NoSource, InValidTemplate
+from .templates import templates, static_list
+
+
 class boiler_builder:
-    #! TUI is not implemented yet.
-    def __init__(self, source=None, target=None, verbose=False, template=None, tui=False) -> None:
+    def __init__(self, source=None, target=None, verbose=False, template=None) -> None:
         self.verbose = verbose
         self.target = target
-        self.template = template    
-        if self.template is None :
+        self.template = template
+        if self.template is None:
             self.structure = self._source(source)
+        else:
+            self.structure = self._source_temp(template.lower())
+
+    def _source_temp(self, template) -> list[dict[str, str]]:
+        try:
+            if template in templates:
+                structure = templates[template].format(self.target)
+            else:
+                raise InValidTemplate(self.verbose)
+
+        except InValidTemplate:
+            structure = templates["python"].format(self.target)
+        return structure
 
     def _source(self, source) -> list[dict[str, str]]:
         try:
-            if os.path.isfile(source) and source.endswith('.json'):
+            if os.path.isfile(source) and source.endswith(".json"):
                 with open(source, "rt", encoding="utf-8") as file_data:
-                    structure = json.load(file_data)
-            else : 
+                    structure = static_list(json.load(file_data)).format(self.target)
+            else:
                 raise NotJsonFile(self.verbose)
-    
-        except Exception as e :
-            
-            if not hasattr(e,"errno") : 
-                NoSource()                
 
-            structure = DEFAULT_FOLDER_STRUCTURE
+        except Exception as e:
+            if not hasattr(e, "errno"):
+                NoSource(self.verbose)
+
+            structure = templates["python"].format(self.target)
         return structure
 
     def build(self):
@@ -42,12 +56,12 @@ class boiler_builder:
                         self._make_folder(joined)
                     elif _type == "file":
                         self._make_file(joined)
-                    else : 
+                    else:
                         raise NotValidJson(self.verbose)
                     print("Created: %s" % joined)
                 except Exception:
                     exit("> Fatal error - exiting...")
-                
+
     def _make_file(self, path):
         """Create an empty file in a given directory"""
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -56,18 +70,6 @@ class boiler_builder:
     def _make_folder(self, path):
         """Create an empty directory"""
         os.makedirs(path, exist_ok=True)
-
-DEFAULT_FOLDER_STRUCTURE = [
-    {"folder": "src"},
-    {"file": "src/__init__.py"},
-    {"folder": "test"},
-    {"file": "test/__init__.py"},
-    {"folder": "res"},
-    {"file": "README.md"},
-    {"file": "setup.py"},
-    {"file": "setup.cfg"},
-    {"file": "pyproject.toml"},
-]
 
 
 if __name__ == "__main__":

@@ -13,6 +13,7 @@ pip install artec
 
 or Install manually
 ```bash
+$ git clone https://github.com/HushmKun/Artec
 $ cd Artec
 $ pip install . 
 ```
@@ -43,22 +44,30 @@ options:
                         Target output path where the structure will be created
   -s SOURCE, --source-file SOURCE
                         Source JSON file containing structure to be created
-  -i, --interactive     Runs Artec in interactive mode.
+  -t TEMPLATE, --template TEMPLATE
+                        Uses ready-made templates.
+  -ls, --list-template  lists all ready-made templates.
   -v, --verbose         Runs Artec in verbose mode.
   -V, --version         Display current version of Artec
 
 Examples:
+        artec -h
         artec -o dest
+        artec -o dest -t python
         artec -o dest -s structure.json
+        artec -o dest -s structure.json -v
+
 ```
 ## Version
 
-    0.1.4
+    0.2.0
 
 ## Contributing
 
 * Big Thanks to [Link-](https://github.com/Link-) for jump starting the project.
 * Thanks for [Narayandas Akhil Achary](https://github.com/0018akhil) for various fixes & features.
+
+Any help that can contribute to the templates will be really appreciated.
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.

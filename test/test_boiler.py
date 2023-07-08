@@ -1,28 +1,35 @@
 import unittest
 import os 
 import sys 
-from shutil import rmtree
 from artec import boiler
+from shutil import rmtree
 
 
-# Disable
+
+# Disable Print
 def blockPrint():
     sys.stdout = open(os.devnull, 'w')
 
-# Restore
+# Restore Print
 def enablePrint():
     sys.stdout.close()
     sys.stdout = sys.__stdout__
 
+
 class BoilerTest(unittest.TestCase):
+
     def setUp(self):
-        self.boiler = boiler.boiler_builder(target="fake")
+        blockPrint()
+        self.default_boiler = boiler.boiler_builder(target="default", verbose=True)
+        self.template_boiler = boiler.boiler_builder(target="template", template='node.js', verbose=True)
 
     def test_default_structure(self):
-        blockPrint()
-        self.boiler.build()
-        enablePrint()
+        self.default_boiler.build()
 
-    def tearDown(self):
-        del self.boiler
-        rmtree("fake")
+    def test_template_structure(self):
+        self.template_boiler.build()
+        enablePrint()
+    
+    def __del__(self):
+        rmtree("default")
+        rmtree("template")

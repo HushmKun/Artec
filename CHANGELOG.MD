@@ -28,47 +28,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unused normalize.css file
 - Identical links assigned in each translation file -->
 
+## [0.2.0] - 2023-07-08
+### Added
+- ```-t``` argument now allows Templates to be used (Limited to Python & Node.Js)
+- Github actions can publish to Pypi & Test.Pypi
+- More improvements to error handling and detection.
+### Changed
+- We can format the project name in the json by using an empty curly brackets {}
+- Tests now is *little bit* better than before.
+
+
 ## [0.1.4] - 2023-06-26
 ### Changed
-
 -  Improved error reporting 
 
 ### Fixed
-
 - Fixed Issue [#8](https://github.com/HushmKun/Artec/issues/8)
 - Fixed error building structure if the source starts with a file.
 
 ## [0.1.3] - 2023-06-20
 
 ### Added
-
 - ```-V ``` argument to print version of Artec. 
 - Changelog.md to records changes.
 
 ## [0.1.2] - 2023-06-17
-
 ### Changed
-
 - Tests directory to the preferred structure.
 
 ### Fixed
-
 - Files and folders are not being created according to "structure.json" [#4](https://github.com/HushmKun/Artec/issues/4)
 
 ## [0.1.1] - 2023-06-15
 
 ### Added
-
 - ```-v``` argument to enforce verbosity.
 
 ## [0.1.0] - 2023-06-12
-
 ### Added
-
 - Unit tests for each module.  
 
 ### Changes
-
 - Ported from Python 2.7 into Python 3
 - Refactor the fork to more pip-package architecture.
 - Split the project into modules for better code & tests.

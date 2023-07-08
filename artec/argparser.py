@@ -1,7 +1,20 @@
 """
 	Parser class is a wrapper for easy access of argparse module
 """
-from argparse import ArgumentParser, Namespace, RawTextHelpFormatter
+from argparse import ArgumentParser, Namespace, RawTextHelpFormatter, _VersionAction
+from .templates import templates
+import sys
+
+
+class list_templates(_VersionAction):
+    def __call__(self, parser: ArgumentParser, *args, **kwargs) -> None:
+        formatter = parser._get_formatter()
+        formatter.add_text(
+            "Available templates\n\n"
+            + "\n".join([f"> {key.title()}\t" for key, value in templates.items()])
+        )
+        parser._print_message(formatter.format_help(), sys.stdout)
+        parser.exit()
 
 
 class Parser(ArgumentParser):
@@ -10,7 +23,8 @@ class Parser(ArgumentParser):
         prog = "Artec"
         usage = "artec [OPTIONS] -o [DEST] "
         description = "Artec is a simple python 3 script to create a project template in a given directory."
-        epilog = """Examples:\n\tartec -o dest\n\tartec -o dest -s structure.json"""
+        epilog = "Examples:\n\tartec -h\n\tartec -o dest\
+            \n\tartec -o dest -t python \n\tartec -o dest -s structure.json \n\tartec -o dest -s structure.json -v"
         super().__init__(
             prog, usage, description, epilog, formatter_class=RawTextHelpFormatter
         )
@@ -33,7 +47,6 @@ class Parser(ArgumentParser):
             type=str,
             required=False,
         )
-
         self.add_argument(
             "-t",
             "--template",
@@ -42,15 +55,13 @@ class Parser(ArgumentParser):
             required=False,
         )
 
-        # ! Not Implemented Yet.
         self.add_argument(
-            "-i",
-            "--interactive",
-            dest="tui",
-            help="Runs Artec in interactive mode.",
-            action="store_true",
-            required=False,
+            "-ls",
+            "--list-template",
+            help="lists all ready-made templates.",
+            action=list_templates,
         )
+
 
         self.add_argument(
             "-v",
@@ -66,8 +77,9 @@ class Parser(ArgumentParser):
             "--version",
             help="Display current version of Artec",
             action="version",
-            version=f"{self.prog} {self.appVersion}"
+            version=f"{self.prog} {self.appVersion}",
         )
+
 
 def main_args(appVersion) -> Namespace:
     parser = Parser(appVersion)
