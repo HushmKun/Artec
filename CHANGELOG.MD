@@ -28,13 +28,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unused normalize.css file
 - Identical links assigned in each translation file -->
 
-## [0.2.0] - 2023-06-30
+## [0.2.0] - 2023-07-08
 ### Added
 - ```-t``` argument now allows Templates to be used (Limited to Python & Node.Js)
 - Github actions can publish to Pypi & Test.Pypi
-
+- More improvements to error handling and detection.
 ### Changed
-- 
+- We can format the project name in the json by using an empty curly brackets {}
+- Tests now is *little bit* better than before.
+
 
 ## [0.1.4] - 2023-06-26
 ### Changed
