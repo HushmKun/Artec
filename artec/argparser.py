@@ -3,17 +3,19 @@
 """
 from argparse import ArgumentParser, Namespace, RawTextHelpFormatter, _VersionAction
 from .templates import templates
-import sys 
+import sys
 
 
 class list_templates(_VersionAction):
-    def __call__(self, parser: ArgumentParser, namespace,  argument, options) -> None:
+    def __call__(self, parser: ArgumentParser, *args, **kwargs) -> None:
         formatter = parser._get_formatter()
         formatter.add_text(
-            "Available templates\n\n" + '\n'.join([f"> {key.title()}\t" for key,value in templates.items()])
+            "Available templates\n\n"
+            + "\n".join([f"> {key.title()}\t" for key, value in templates.items()])
         )
         parser._print_message(formatter.format_help(), sys.stdout)
         parser.exit()
+
 
 class Parser(ArgumentParser):
     def __init__(self, appVersion):
@@ -21,7 +23,8 @@ class Parser(ArgumentParser):
         prog = "Artec"
         usage = "artec [OPTIONS] -o [DEST] "
         description = "Artec is a simple python 3 script to create a project template in a given directory."
-        epilog = """Examples:\n\tartec -o dest\n\tartec -o dest -s structure.json"""
+        epilog = "Examples:\n\tartec -h\n\tartec -o dest\
+            \n\tartec -o dest -t python \n\tartec -o dest -s structure.json \n\tartec -o dest -s structure.json -v"
         super().__init__(
             prog, usage, description, epilog, formatter_class=RawTextHelpFormatter
         )
@@ -44,7 +47,6 @@ class Parser(ArgumentParser):
             type=str,
             required=False,
         )
-
         self.add_argument(
             "-t",
             "--template",
@@ -52,6 +54,14 @@ class Parser(ArgumentParser):
             help="Uses ready-made templates.",
             required=False,
         )
+
+        self.add_argument(
+            "-ls",
+            "--list-template",
+            help="lists all ready-made templates.",
+            action=list_templates,
+        )
+
 
         self.add_argument(
             "-v",
@@ -70,12 +80,6 @@ class Parser(ArgumentParser):
             version=f"{self.prog} {self.appVersion}",
         )
 
-        self.add_argument(
-            "-ls",
-            "--list-template",
-            help="lists all ready-made templates.",
-            action=list_templates,
-        )
 
 def main_args(appVersion) -> Namespace:
     parser = Parser(appVersion)

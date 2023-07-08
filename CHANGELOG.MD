@@ -30,9 +30,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2023-06-30
 ### Added
-- ```-t``` argument now allows Templates to be used 
+- ```-t``` argument now allows Templates to be used (Limited to Python & Node.Js)
 - Github actions can publish to Pypi & Test.Pypi
 
+### Changed
+- 
 
 ## [0.1.4] - 2023-06-26
 ### Changed

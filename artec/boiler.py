@@ -40,7 +40,7 @@ class boiler_builder:
 
         except Exception as e:
             if not hasattr(e, "errno"):
-                NoSource()
+                NoSource(self.verbose)
 
             structure = templates["python"].format(self.target)
         return structure

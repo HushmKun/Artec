@@ -8,7 +8,7 @@ _It's a maintained version of PyBoiler_
 Download from pip 
 
 ```bash
-pip install -i https://test.pypi.org/simple/ Artec==0.2.0rc1
+pip install -i https://test.pypi.org/simple/ Artec==0.2.0
 ```
 
 or Install manually
@@ -45,19 +45,21 @@ options:
                         Source JSON file containing structure to be created
   -t TEMPLATE, --template TEMPLATE
                         Uses ready-made templates.
+  -ls, --list-template  lists all ready-made templates.
   -v, --verbose         Runs Artec in verbose mode.
   -V, --version         Display current version of Artec
 
 Examples:
         artec -h
         artec -o dest
-        artec -o dest -t python 
+        artec -o dest -t python
         artec -o dest -s structure.json
         artec -o dest -s structure.json -v
+
 ```
 ## Version
 
-    0.2.0-rc3
+    0.2.0-alpha
 
 ## Contributing
 

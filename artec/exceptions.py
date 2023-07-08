@@ -8,9 +8,12 @@ class NotJsonFile(FileNotFoundError):
         print("> Reverting to default structure")
 
 
-def NoSource():
-    print("> No Source Provided")
-    print("> Using default structure")
+class NoSource:
+    def __init__(self, verbose: bool) -> None:
+        if not verbose:
+            return
+        print("> No Source Provided")
+        print("> Using default structure")
 
 
 class NotValidJson(KeyError):
