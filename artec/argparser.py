@@ -11,7 +11,7 @@ class list_templates(_VersionAction):
         formatter = parser._get_formatter()
         formatter.add_text(
             "Available templates\n\n"
-            + "\n".join([f"> {key.title()}\t" for key, value in templates.items()])
+            + "\n".join([f"> {key.title()}\t" for key in templates.keys()])
         )
         parser._print_message(formatter.format_help(), sys.stdout)
         parser.exit()
@@ -30,16 +30,9 @@ class Parser(ArgumentParser):
         )
 
     def setup(self):
-        self.add_argument(
-            "-o",
-            "--output-directory",
-            dest="target",
-            help="Target output path where the structure will be created",
-            type=str,
-            required=True,
-        )
-
-        self.add_argument(
+        group = self.add_mutually_exclusive_group()
+        
+        group.add_argument(
             "-s",
             "--source-file",
             dest="source",
@@ -47,12 +40,22 @@ class Parser(ArgumentParser):
             type=str,
             required=False,
         )
-        self.add_argument(
+
+        group.add_argument(
             "-t",
             "--template",
             dest="template",
             help="Uses ready-made templates.",
             required=False,
+        )
+
+        self.add_argument(
+            "-o",
+            "--output-directory",
+            dest="target",
+            help="Target output path where the structure will be created",
+            type=str,
+            required=True,
         )
 
         self.add_argument(
@@ -79,7 +82,6 @@ class Parser(ArgumentParser):
             action="version",
             version=f"{self.prog} {self.appVersion}",
         )
-
 
 def main_args(appVersion) -> Namespace:
     parser = Parser(appVersion)
