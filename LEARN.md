@@ -59,48 +59,60 @@ The first thing I focused on was parsing arguments to the program, for that I ma
 
 The main focus in that wrapper was to make it easy to modify the args whether to add or remove, Theoretically the parser should be "elegant" enough to be recycled in any other project with no hassle, In the end there's a driver function that's easy to use called (main_args).
 
+Couple of things I had to focus on that messed up my code a little bit: 
+* Custom Action to list my templates.
+* Mutually exclusive arguments 
+
 ### Boiler_builder
 Not the easiest part but not the hardest also, It had to accept arguments from our [parser](#parser) then decide some things : 
     
-1. Is the source a JSON file ? 
-    * Yes : It's ***probably*** the structure.     
-    * No  : Use default structure.
-2. Should I start the TUI ?
-    * Yes : **Not Implemented yet.**     
-    * No  : **Not Implemented yet.**
+1. Did you use a template ? 
+    * Yes :
+        * Is the template valid ? 
+            1. Yes : Use it. 
+            2. No : Use default Python structure. 
+
+    * No  : 
+        * Is Source provided ? 
+            1. Yes : Is valid ?
+                1. Yes : Apply it.
+                2. No : Use default Python structure. 
+            2. No : Use default Python structure. 
+
+Also, a major key take for me was Exceptions, We kind of ignore raising them or explaining why this exceptions happens to the user and it just leaves them lost in the application. 
 
 The build method is fairly simple, It just iterates over the structure dictionary and creates each folder and/or file.      
 
 ### Tests 
-The tests was an uncharted waters for me, So trying unittest was probably a good idea. You should have a look [here](tests/) not the best but meh.
+The tests was an uncharted waters for me, So trying unittest was probably a good idea. You should have a look [here](tests/) not the best but good enough for me.
 
 ### Packaging
 The hardest part also the one I learned in the most, let's start with some key takes : 
-1. ```__init__.py``` is a very **important** reserved key file.
-2. Your project structure should look similar to what I did here (*Also The ```__main__.py``` part isn't 100% perfect*
-):    
-
+1. ```__init__.py``` is a very **important** reserved key file, It's main usage comes when a package provide an API. (_It isn't necessary here, except in tests_)
+2. Your project structure should look similar to what I did here (*Also The ```__main__.py``` part isn't 100% perfect*):    
+3. I figured that keeping your entry points in ```__main__.py``` makes it easier for people to figure out where is the start of your project, how does it work, etc.
 ```    
     .
     ├── artec
+    │   ├── __main__.py
     │   ├── argparser.py
     │   ├── boiler.py
-    │   ├── __init__.py
-    │   ├── __main__.py
-    │   └── tui.py
+    │   ├── exceptions.py
+    │   └── templates.py
     ├── CONTRIBUTING.md
     ├── LEARN.md
     ├── LICENSE
     ├── pyproject.toml
     ├── README.md
     ├── setup.py
-    └── tests
-        ├── boiler_test.py
+    └── test
         ├── __init__.py
+        ├── boiler_test.py
         └── parser_test.py
 ``` 
-3. **Be Aware of relative and absolute imports.** They are a mess in packaging if your structure isn't "clean" enough. 
-4. [This](https://packaging.python.org/en/latest/overview/) is a very good reference.
+4. **Be Aware of relative and absolute imports.** They are a mess in packaging if your structure isn't "clean" enough. 
+5. **Automate your build & deploy**, It sucks having to manage the versions and manage uploading them in order each time. 
+5. [This](https://packaging.python.org/en/latest/overview/) is a very good reference.
 
 
 ## Finishing up

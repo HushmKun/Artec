@@ -28,6 +28,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unused normalize.css file
 - Identical links assigned in each translation file -->
 
+## [0.2.1] - 2023-07-16
+
+### Fixed
+
+- ```-s``` & ```-t``` conflict.
+- ('files' or 'file') and ('folders' or 'folder') can now be used in the Json structure.
+
+### Changed
+
+- Various functions to increase performance.
+- Unified exceptions interface.
+- Added extra data to [LEARN.md](LEARN.md)
+- Added extra data to [CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## [0.2.0] - 2023-07-08
 ### Added
 - ```-t``` argument now allows Templates to be used (Limited to Python & Node.Js)

@@ -1,6 +1,6 @@
+![Logo](res/Artec.png)
 # Artec
-
-Artec is a simple python 3 script to create a project template in a given directory.<br>
+A python application that creates a configurable python project template in a given directory..<br>
 _It's a maintained version of PyBoiler_
 
 ## Installation
@@ -8,7 +8,7 @@ _It's a maintained version of PyBoiler_
 Download from pip 
 
 ```bash
-pip install -i https://test.pypi.org/simple/ Artec==0.2.0
+$ pip install -i https://test.pypi.org/simple/ Artec==0.2.1
 ```
 
 or Install manually
@@ -22,14 +22,17 @@ Create a JSON file to match the folder structure you desire
 $ vim structure.json 
     
 # Paste the below into your file and modify as you desire
-[{'folder': 'source'}, 
-{'file': 'source/file1.txt'}, # Nested file
-{'folder': 'sublime'}, 
-{'file': 'sublime/file2.txt'}, 
-{'folder': 'docs'}, 
-{'file': 'docs/file3.txt'}, 
-{'file': 'docs/file4.txt'},
-{'file': 'README.md'}]
+[
+    {"folder": "{}"},           # Use '{}' to be replaced with project name.
+    {"file": "{}/__init__.py"},
+    {"folder": "test"},
+    {"file": "test/__init__.py"},
+    {"file": "README.md"},
+    {"file": "LICENSE"},
+    {"file": "setup.py"},
+    {"file": "setup.cfg"},
+    {"file": "pyproject.toml"},
+]
 ```
  How to execute
 ```
@@ -55,24 +58,110 @@ Examples:
         artec -o dest -t python
         artec -o dest -s structure.json
         artec -o dest -s structure.json -v
+```
 
+## Templates
+### Python 
+Project Named Artec 
+```
+artec
+├── artec
+│   └── __main__.py
+├── test
+│   └── __init__.py
+├── LICENSE
+├── pyproject.toml
+├── README.md
+├── setup.cfg
+└── setup.py
+ 
+
+2 directories, 7 files
+```
+### Node.Js 
+Project Named Node 
+```
+Node
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── README.md
+└── src
+    ├── api
+    │   ├── controllers
+    │   │   └── user
+    │   │       ├── auth
+    │   │       │   ├── forgot-password.js
+    │   │       │   ├── login.js
+    │   │       │   ├── logout.js
+    │   │       │   ├── refresh-token.js
+    │   │       │   ├── register.js
+    │   │       │   ├── send-verification-code.js
+    │   │       │   └── verify-email.js
+    │   │       ├── delete-user.js
+    │   │       ├── edit
+    │   │       │   ├── change-password.js
+    │   │       │   └── edit-user.js
+    │   │       ├── get-user.js
+    │   │       └── index.js
+    │   ├── middlewares
+    │   │   ├── auth
+    │   │   │   ├── check-auth.js
+    │   │   │   └── check-authority.js
+    │   │   ├── image-upload.js
+    │   │   ├── index.js
+    │   │   ├── object-id-control.js
+    │   │   └── rate-limiter.js
+    │   ├── routes
+    │   │   ├── index.js
+    │   │   └── user.js
+    │   └── validators
+    │       ├── index.js
+    │       └── user.validator.js
+    ├── app.js
+    ├── config
+    │   └── index.js
+    ├── loaders
+    │   ├── express.js
+    │   ├── index.js
+    │   └── mongoose.js
+    ├── models
+    │   ├── index.js
+    │   ├── log.js
+    │   ├── token.js
+    │   └── user.js
+    └── utils
+        ├── helpers
+        │   ├── error-helper.js
+        │   ├── generate-random-code.js
+        │   ├── ip-helper.js
+        │   ├── jwt-token-helper.js
+        │   └── local-text-helper.js
+        ├── index.js
+        ├── lang
+        │   ├── en.json
+        │   ├── get-text.json
+        │   └── tr.json
+        ├── logger.js
+        └── send-code-to-email.js
+
+17 directories, 46 files
 ```
 ## Version
 
-    0.2.0
+    0.2.1
 
 ## Contributing
+Please refer to [Here](CONTRIBUTING.md) for contributing.
+Any help that can contribute to the templates will be really appreciated.
 
 * Big Thanks to [Link-](https://github.com/Link-) for jump starting the project.
 * Thanks for [Narayandas Akhil Achary](https://github.com/0018akhil) for various fixes & features.
 
-Any help that can contribute to the templates will be really appreciated.
+## Learning
+Since this project is intended as a learning project, It helps me figure out what is the best practices of X, How to use Y, etc...
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
+If you come here to learn, Read [this](LEARN.md), I will be glad if it helped you learn something new. 
 ## License
 
 [GNU GPLv3.0](https://choosealicense.com/licenses/gpl-3.0/)

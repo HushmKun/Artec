@@ -8,8 +8,10 @@ class NotJsonFile(FileNotFoundError):
         print("> Reverting to default structure")
 
 
-class NoSource:
+class NoSource(ValueError):
     def __init__(self, verbose: bool) -> None:
+        super().__init__("> No Source Provided")
+        self.errno = 102
         if not verbose:
             return
         print("> No Source Provided")
@@ -19,7 +21,7 @@ class NoSource:
 class NotValidJson(KeyError):
     def __init__(self, verbose: bool) -> None:
         super().__init__("> Provided Json file format is incorrect")
-        self.errno = 102
+        self.errno = 103
         if not verbose:
             return
         print("> Provided Json file format is incorrect")
@@ -28,7 +30,7 @@ class NotValidJson(KeyError):
 class InValidTemplate(KeyError):
     def __init__(self, verbose: bool) -> None:
         super().__init__("> Provided Template argument is invalid")
-        self.errno = 103
+        self.errno = 104
         if not verbose:
             return
         print("> Provided Template argument is invalid")

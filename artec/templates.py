@@ -16,7 +16,7 @@ PYTHON = static_list(
         {"file": "LICENSE"},
         {"file": "setup.py"},
         {"file": "setup.cfg"},
-        {"file": "pyproject.toml"},
+        {"file": "pyproject.toml"}
     ]
 )
 
