@@ -8,7 +8,7 @@ _It's a maintained version of PyBoiler_
 Download from pip 
 
 ```bash
-$ pip install -i https://test.pypi.org/simple/ Artec==0.2.1
+$ pip install  Artec
 ```
 
 or Install manually
