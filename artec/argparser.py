@@ -1,5 +1,5 @@
 """
-	Parser class is a wrapper for easy access of argparse module
+	Parser class is a wrapper for easy access of argparse module v2.1.0
 """
 from argparse import ArgumentParser, Namespace, RawTextHelpFormatter, _VersionAction
 from .templates import templates
@@ -22,16 +22,18 @@ class Parser(ArgumentParser):
         self.appVersion = appVersion
         prog = "Artec"
         usage = "artec [OPTIONS] -o [DEST] "
-        description = "Artec is a simple python 3 script to create a project template in a given directory."
+        description = "Artec is a simple python 3 script to create a\
+             project template in a given directory."
         epilog = "Examples:\n\tartec -h\n\tartec -o dest\
-            \n\tartec -o dest -t python \n\tartec -o dest -s structure.json \n\tartec -o dest -s structure.json -v"
+            \n\tartec -o dest -t python \n\tartec -o dest -s structure.json\
+             \n\tartec -o dest -s structure.json -v"
         super().__init__(
             prog, usage, description, epilog, formatter_class=RawTextHelpFormatter
         )
 
     def setup(self):
         group = self.add_mutually_exclusive_group()
-        
+
         group.add_argument(
             "-s",
             "--source-file",
@@ -65,7 +67,6 @@ class Parser(ArgumentParser):
             action=list_templates,
         )
 
-
         self.add_argument(
             "-v",
             "--verbose",
@@ -82,6 +83,7 @@ class Parser(ArgumentParser):
             action="version",
             version=f"{self.prog} {self.appVersion}",
         )
+
 
 def main_args(appVersion) -> Namespace:
     parser = Parser(appVersion)
