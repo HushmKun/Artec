@@ -4,8 +4,8 @@
     {"folder": "test"},
     {"file": "test/__init__.py"},
     {"file": "README.md"},
-    {"file": "CHANGELOG.md"},
     {"file": "LICENSE"},
     {"file": "setup.py"},
+    {"file": "setup.cfg"},
     {"file": "pyproject.toml"}
 ]

@@ -5,8 +5,8 @@ from pathlib import Path
 from artec.boiler import boiler_builder
 from artec.templates import static_list, templates
 
-VAILD_JSON = "test\\resources\\structure.json"
-INVAILD_JSON = "test\\resources\\structure.txt"
+VAILD_JSON = Path("./test/resources/structure.json")
+INVAILD_JSON = Path("./test/resources/structure.txt")
 
 class TestBoilerBuilder(unittest.TestCase):
     def test_init(self):
