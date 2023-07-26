@@ -31,7 +31,7 @@ class boiler_builder:
 
     def _source(self, source) -> list[dict[str, str]]:
         try:
-            if source is None : 
+            if source is None:
                 raise NoSource(self.verbose)
             if os.path.isfile(source) and source.endswith(".json"):
                 with open(source, "rt", encoding="utf-8") as file_data:
@@ -39,9 +39,9 @@ class boiler_builder:
             else:
                 raise NotJsonFile(self.verbose)
 
-        except Exception as e:
-
+        except Exception:
             structure = templates["python"].format(self.target)
+
         return structure
 
     def build(self):
@@ -51,9 +51,9 @@ class boiler_builder:
             for _type, name in entry.items():
                 try:
                     joined = Path(os.path.join(self.target, name))
-                    if "folder" in _type :
+                    if "folder" in _type:
                         self._make_folder(joined)
-                    elif "file" in _type :
+                    elif "file" in _type:
                         self._make_file(joined)
                     else:
                         raise NotValidJson(self.verbose)
