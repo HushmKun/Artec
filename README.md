@@ -8,7 +8,7 @@ _It's a maintained version of PyBoiler_
 Download from pip 
 
 ```bash
-$ pip install -i https://test.pypi.org/simple/ Artec==0.2.1
+$ pip install -i https://test.pypi.org/simple/ Artec==0.2.2
 ```
 
 or Install manually
@@ -149,7 +149,7 @@ Node
 ```
 ## Version
 
-    0.2.1
+    0.2.2
 
 ## Contributing
 Please refer to [Here](CONTRIBUTING.md) for contributing.
