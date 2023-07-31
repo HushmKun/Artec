@@ -1,4 +1,4 @@
-![Logo](res/Artec.png)
+![Logo](img/Artec.png)
 # Artec
 A python application that creates a configurable python project template in a given directory..<br>
 _It's a maintained version of PyBoiler_

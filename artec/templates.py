@@ -20,6 +20,39 @@ PYTHON = static_list(
     ]
 )
 
+FLASK = static_list(
+    [
+        {"folder": "{}"},
+        {"file": "{}/__init__.py"},
+        {"file": "{}/db.py"},
+        {"file": "{}/schema.py"},
+        {"file": "{}/auth.py"},
+        {"file": "{}/blog.py"},
+        {"folder": "{}/templates"},
+        {"file": "{}/templates/base.html"},
+        {"folder": "{}/templates/auth/"},
+        {"file": "{}/templates/auth/login.html"},
+        {"file": "{}/templates/auth/register.html"},
+        {"folder": "{}/blog"},
+        {"file": "{}/blog/create.html"},
+        {"file": "{}/blog/index.html"},
+        {"file": "{}/blog/update.html"},
+        {"folder": "{}/static"},
+        {"file": "{}/static/style.css"},
+        {"folder": "test"},
+        {"file": "test/__init__.py"},
+        {"file": "test/conftest.py"},
+        {"file": "test/data.sql"},
+        {"file": "test/test_db.py"},
+        {"file": "test/test_auth.py"},
+        {"file": "test/test_blog.py"},
+        {"file": "README.md"},
+        {"file": "LICENSE"},
+        {"file": "setup.py"},
+        {"file": "pyproject.toml"},
+    ]
+    )
+
 NODE_JS = static_list(
     [
         {"folder": "src"},
