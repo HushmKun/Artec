@@ -28,6 +28,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unused normalize.css file
 - Identical links assigned in each translation file -->
 
+## [0.3.0] - 2023-08-05
+
+### Added
+
+- Logging to text file & stdout on `-v` flag. 
+- Varying Log levels.
+- Initialize a git Repository & Commits the structure. 
+- New template : _Flask_ 
+
+### Fixed
+
+- Improved error reporting.
+
 ## [0.2.1] - 2023-07-16
 
 ### Fixed

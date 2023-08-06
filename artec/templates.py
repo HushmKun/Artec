@@ -1,9 +1,15 @@
+from . import exceptions as ex
+
+
 class static_list(list):
     def format(self, name):
-        for _ in self:
-            for i, j in _.items():
-                _[i] = j.format(name)
-        return self
+        try:
+            for _ in self:
+                for i, j in _.items():
+                    _[i] = j.format(name)
+            return self
+        except AttributeError:
+            raise ex.NotValidJson()
 
 
 PYTHON = static_list(
@@ -51,7 +57,7 @@ FLASK = static_list(
         {"file": "setup.py"},
         {"file": "pyproject.toml"},
     ]
-    )
+)
 
 NODE_JS = static_list(
     [
@@ -120,7 +126,9 @@ NODE_JS = static_list(
         {"file": "package-lock.json"},
     ]
 )
+
 templates = {
     "python": PYTHON,
     "node.js": NODE_JS,
+    "flask": FLASK,
 }

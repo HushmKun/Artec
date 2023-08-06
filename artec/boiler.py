@@ -5,14 +5,23 @@
 import json
 import os
 from pathlib import Path
-from .exceptions import NotJsonFile, NotValidJson, NoSource, InValidTemplate
-from .templates import templates, static_list
-
+from . import exceptions as ex
+from . import templates as temps
+from . import repo 
+from . import logger 
 
 class boiler_builder:
-    def __init__(self, source=None, target=None, verbose=False, template=None) -> None:
-        self.verbose = verbose
+    def __init__(
+        self,
+        source: str = None,
+        target: str = None,
+        template: str = None,
+        git=False,
+    ) -> None:
         self.target = target
+        self.git = git
+        self.home_dir = os.path.abspath(os.path.curdir)
+
         if template is None:
             self.structure = self._source(source)
         else:
@@ -20,27 +29,29 @@ class boiler_builder:
 
     def _source_temp(self, template) -> list[dict[str, str]]:
         try:
-            if template in templates:
-                structure = templates[template].format(self.target)
+            if template in temps.templates:
+                structure = temps.templates[template].format(self.target)
             else:
-                raise InValidTemplate(self.verbose)
+                raise ex.InValidTemplate()
 
-        except InValidTemplate:
-            structure = templates["python"].format(self.target)
+        except ex.InValidTemplate:
+            structure = temps.templates["python"].format(self.target)
         return structure
 
     def _source(self, source) -> list[dict[str, str]]:
         try:
             if source is None:
-                raise NoSource(self.verbose)
+                raise ex.NoSource()
             if os.path.isfile(source) and source.endswith(".json"):
                 with open(source, "rt", encoding="utf-8") as file_data:
-                    structure = static_list(json.load(file_data)).format(self.target)
+                    structure = temps.static_list(json.load(file_data)).format(
+                        self.target
+                    )
             else:
-                raise NotJsonFile(self.verbose)
+                raise ex.NotJsonFile()
 
         except Exception:
-            structure = templates["python"].format(self.target)
+            structure = temps.templates["python"].format(self.target)
 
         return structure
 
@@ -56,10 +67,19 @@ class boiler_builder:
                     elif "file" in _type:
                         self._make_file(joined)
                     else:
-                        raise NotValidJson(self.verbose)
+                        raise ex.NotValidJson()
                     print("Created: %s" % joined)
                 except Exception:
-                    exit("> Fatal error - exiting...")
+                    pass
+        print()
+
+        if self.git:
+            try:
+                Repo = repo.repository(os.path.join(self.home_dir, self.target), self.target)
+                Repo.add()
+                    
+            except Exception as e :
+                ex.GitError(e)
 
     def _make_file(self, path):
         """Create an empty file in a given directory"""

@@ -11,7 +11,7 @@ exclude = ["img*"]
 
 [project]
 name = "Artec"
-version = "0.2.2"
+version = "0.3.0"
 authors = [
   { name="HushmKun", email="HushmKun@outlook.com" },
   { name="Link-", email="bsm.dgdy@gmail.com" },
@@ -27,7 +27,21 @@ classifiers = [
         "Topic :: Software Development :: Build Tools"
       ]
 dependencies = [
+    "GitPython"
 ]
+
+[project.license]
+file = "LICENSE"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "flake8",
+]
+test = [
+    "pytest",
+]
+
 
 [project.urls]
 "Homepage" = "https://github.com/HushmKun/Artec"
