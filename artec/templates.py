@@ -1,9 +1,15 @@
+from . import exceptions as ex
+
+
 class static_list(list):
     def format(self, name):
-        for _ in self:
-            for i, j in _.items():
-                _[i] = j.format(name)
-        return self
+        try:
+            for _ in self:
+                for i, j in _.items():
+                    _[i] = j.format(name)
+            return self
+        except AttributeError:
+            raise ex.NotValidJson()
 
 
 PYTHON = static_list(
@@ -16,6 +22,39 @@ PYTHON = static_list(
         {"file": "LICENSE"},
         {"file": "setup.py"},
         {"file": "setup.cfg"},
+        {"file": "pyproject.toml"},
+    ]
+)
+
+FLASK = static_list(
+    [
+        {"folder": "{}"},
+        {"file": "{}/__init__.py"},
+        {"file": "{}/db.py"},
+        {"file": "{}/schema.py"},
+        {"file": "{}/auth.py"},
+        {"file": "{}/blog.py"},
+        {"folder": "{}/templates"},
+        {"file": "{}/templates/base.html"},
+        {"folder": "{}/templates/auth/"},
+        {"file": "{}/templates/auth/login.html"},
+        {"file": "{}/templates/auth/register.html"},
+        {"folder": "{}/blog"},
+        {"file": "{}/blog/create.html"},
+        {"file": "{}/blog/index.html"},
+        {"file": "{}/blog/update.html"},
+        {"folder": "{}/static"},
+        {"file": "{}/static/style.css"},
+        {"folder": "test"},
+        {"file": "test/__init__.py"},
+        {"file": "test/conftest.py"},
+        {"file": "test/data.sql"},
+        {"file": "test/test_db.py"},
+        {"file": "test/test_auth.py"},
+        {"file": "test/test_blog.py"},
+        {"file": "README.md"},
+        {"file": "LICENSE"},
+        {"file": "setup.py"},
         {"file": "pyproject.toml"},
     ]
 )
@@ -87,7 +126,9 @@ NODE_JS = static_list(
         {"file": "package-lock.json"},
     ]
 )
+
 templates = {
     "python": PYTHON,
     "node.js": NODE_JS,
+    "flask": FLASK,
 }

@@ -42,6 +42,7 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+.pytest_cache/
 nosetests.xml
 coverage.xml
 *,cover
@@ -65,3 +66,12 @@ venv/
 
 # vscodium
 *vscode/
+
+# JetBrains
+.idea/
+
+# vscodium
+*vscode/
+
+# JetBrains
+.idea/

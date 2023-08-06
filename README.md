@@ -1,6 +1,6 @@
 ![Logo](img/Artec.png)
 # Artec
-A python application that creates a configurable python project template in a given directory..<br>
+A python application that creates a configurable python project template in a given directory.<br>
 _It's a maintained version of PyBoiler_
 
 ## Installation
@@ -8,14 +8,14 @@ _It's a maintained version of PyBoiler_
 Download from pip 
 
 ```bash
-$ pip install  Artec
+$ pip install Artec
 ```
 
 or Install manually
 ```bash
 $ git clone https://github.com/HushmKun/Artec
 $ cd Artec
-$ pip install . 
+$ pip install -U . 
 ```
 ## Usage
 Create a JSON file to match the folder structure you desire
@@ -35,22 +35,24 @@ $ vim structure.json
     {"file": "pyproject.toml"},
 ]
 ```
- How to execute
+How to execute
 ```
+$ artec -h
 usage: artec [OPTIONS] -o [DEST] 
 
-Artec is a simple python 3 script to create a project template in a given directory.
+Artec is a python application that creates a configurable python project template in a given directory.
 
 options:
   -h, --help            show this help message and exit
-  -o TARGET, --output-directory TARGET
-                        Target output path where the structure will be created
   -s SOURCE, --source-file SOURCE
                         Source JSON file containing structure to be created
   -t TEMPLATE, --template TEMPLATE
                         Uses ready-made templates.
+  -o TARGET, --output-directory TARGET
+                        Target output path where the structure will be created
   -ls, --list-template  lists all ready-made templates.
   -v, --verbose         Runs Artec in verbose mode.
+  -g, --git-init        Creates a git Repo for the project.
   -V, --version         Display current version of Artec
 
 Examples:
@@ -62,7 +64,9 @@ Examples:
 ```
 
 ## Templates
-### Python 
+<details>
+<summary> Python </summary>
+
 Project Named Artec 
 ```
 artec
@@ -76,10 +80,52 @@ artec
 ├── setup.cfg
 └── setup.py
  
-
 2 directories, 7 files
 ```
-### Node.Js 
+</details>
+
+<details>
+<summary> Flask </summary>
+
+Project Named flaskr 
+```
+flaskr
+.
+├── flaskr
+│   ├── auth.py
+│   ├── blog
+│   │   ├── create.html
+│   │   ├── index.html
+│   │   └── update.html
+│   ├── blog.py
+│   ├── db.py
+│   ├── __init__.py
+│   ├── schema.py
+│   ├── static
+│   │   └── style.css
+│   └── templates
+│       ├── auth
+│       │   ├── login.html
+│       │   └── register.html
+│       └── base.html
+├── LICENSE
+├── pyproject.toml
+├── README.md
+├── setup.py
+└── test
+    ├── conftest.py
+    ├── data.sql
+    ├── __init__.py
+    ├── test_auth.py
+    ├── test_blog.py
+    └── test_db.py
+
+7 directories, 22 files
+```
+</details>
+<details>
+<summary> Node.Js </summary>
+
 Project Named Node 
 ```
 Node
@@ -148,9 +194,11 @@ Node
 
 17 directories, 46 files
 ```
+</details>
+
 ## Version
 
-    0.2.1
+    0.3.0
 
 ## Contributing
 Please refer to [Here](CONTRIBUTING.md) for contributing.

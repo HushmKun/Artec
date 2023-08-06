@@ -20,7 +20,7 @@
 ## Introduction
 
 Hello 👋🏿! <br>
-I am Hussein Mukhtar, a junior student (3rd year) in Computer Science in Suez University, And I'd like to walk you through ```Artec```.  
+I am Hussein Mukhtar, a Senior Computer Science student in Suez University, And I'd like to walk you through ```Artec```.  
 
 ## How it all started?
 Three years ago, I started learning Python and It was a good "hobby", Till you want to share your works with people.
@@ -78,8 +78,13 @@ Not the easiest part but not the hardest also, It had to accept arguments from o
                 1. Yes : Apply it.
                 2. No : Use default Python structure. 
             2. No : Use default Python structure. 
+2. Did user choose to initialize a git repository ?
+    * Yes : initialize it.
+    * No : ignore.
 
-Also, a major key take for me was Exceptions, We kind of ignore raising them or explaining why this exceptions happens to the user and it just leaves them lost in the application. 
+~~Also, a major key take for me was Exceptions, I kind of ignored raising them or explaining why this exceptions happens to the user and it just leaves them lost in the application.~~
+
+Although it's a rough implementation, Now I raise specific custom-made exceptions in essential places to help the user and also log the process correctly.    
 
 The build method is fairly simple, It just iterates over the structure dictionary and creates each folder and/or file.      
 
@@ -88,9 +93,8 @@ The tests was an uncharted waters for me, So trying unittest was probably a good
 
 ### Packaging
 The hardest part also the one I learned in the most, let's start with some key takes : 
-1. ```__init__.py``` is a very **important** reserved key file, It's main usage comes when a package provide an API. (_It isn't necessary here, except in tests_)
-2. Your project structure should look similar to what I did here (*Also The ```__main__.py``` part isn't 100% perfect*):    
-3. I figured that keeping your entry points in ```__main__.py``` makes it easier for people to figure out where is the start of your project, how does it work, etc.
+1. ```__init__.py``` is a very **important** reserved key file, It's main usage comes when a package provide an API (_It isn't necessary here, except in tests_), I used it as a connector of the logger module _Don't think it's correct but meh_.
+2. The project structure might look similar to what I did here (*Also The ```__main__.py``` part isn't 100% perfect*):    
 ```    
     .
     ├── artec
@@ -98,6 +102,7 @@ The hardest part also the one I learned in the most, let's start with some key t
     │   ├── argparser.py
     │   ├── boiler.py
     │   ├── exceptions.py
+    │   ├── repo.py
     │   └── templates.py
     ├── CONTRIBUTING.md
     ├── LEARN.md
@@ -107,9 +112,13 @@ The hardest part also the one I learned in the most, let's start with some key t
     ├── setup.py
     └── test
         ├── __init__.py
-        ├── boiler_test.py
-        └── parser_test.py
+        ├── test_boiler.py
+        ├── test_exceptions.py
+        └── test_parser.py
 ``` 
+* P.S.: It's not necessary to make the same, some try different structures and it works for them so don't limit yourself to mine.
+
+3. I figured that keeping your entry points in ```__main__.py``` makes it easier for people to figure out where is the start of your project, how does it work, etc.
 4. **Be Aware of relative and absolute imports.** They are a mess in packaging if your structure isn't "clean" enough. 
 5. **Automate your build & deploy**, It sucks having to manage the versions and manage uploading them in order each time. 
 5. [This](https://packaging.python.org/en/latest/overview/) is a very good reference.

@@ -14,17 +14,19 @@ class TestParser(unittest.TestCase):
     def test_setup(self):
         parser = Parser("1.0.0")
         parser.setup()
-        self.assertIn("-o", parser.__dict__['_option_string_actions'])
-        self.assertIn("-ls", parser.__dict__['_option_string_actions'])
-        self.assertIn("-v", parser.__dict__['_option_string_actions'])
-        self.assertIn("-V", parser.__dict__['_option_string_actions'])
-        self.assertIn("-s", parser.__dict__['_option_string_actions'])
-        self.assertIn("-t", parser.__dict__['_option_string_actions'])
+        self.assertIn("-h", parser.__dict__["_option_string_actions"])
+        self.assertIn("-s", parser.__dict__["_option_string_actions"])
+        self.assertIn("-t", parser.__dict__["_option_string_actions"])
+        self.assertIn("-o", parser.__dict__["_option_string_actions"])
+        self.assertIn("-ls", parser.__dict__["_option_string_actions"])
+        self.assertIn("-v", parser.__dict__["_option_string_actions"])
+        self.assertIn("-g", parser.__dict__["_option_string_actions"])
+        self.assertIn("-V", parser.__dict__["_option_string_actions"])
 
     def test_main_args(self):
         parser = Parser("1.0.0")
         parser.setup()
-        args = parser.parse_args(['-t', 'target', '-o', 'fake', '-v'])
+        args = parser.parse_args(["-t", "target", "-o", "fake", "-v"])
         self.assertIsInstance(args, Namespace)
         self.assertIn("target", args.__dict__)
         self.assertIn("verbose", args.__dict__)
@@ -52,8 +54,6 @@ class TestParser(unittest.TestCase):
         self.assertIn("target", args.__dict__)
         self.assertEqual(args.target, "target")
 
-if __name__ == "__main__":
-    pass
 
 if __name__ == "__main__":
     pass
