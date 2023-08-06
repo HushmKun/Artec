@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Varying Log levels.
 - Initialize a git Repository & Commits the structure. 
 - New template : _Flask_ 
+- Requirements file.
 
 ### Fixed
 
