@@ -1,7 +1,5 @@
 import unittest
 import json
-from shutil import rmtree
-from os import remove 
 import git
 from pathlib import Path
 from artec.boiler import boiler_builder
@@ -42,18 +40,15 @@ class TestBoilerBuilder(unittest.TestCase):
         builder.build()
         self.assertTrue(Path("target/test").is_dir())
         self.assertTrue(Path("target/README.md").is_file())
-        rmtree("target")
 
     def test_git(self): 
         builder = boiler_builder(
-            template=VAILD_JSON, target="target", git=True
+            template="python", target="target", git=True
         )
         builder.build()
         self.assertTrue(Path("target/test").is_dir())
         self.assertTrue(Path("target/README.md").is_file())
-        # self.assertTrue()
-        git.
-        rmtree("target")
+        self.assertIsInstance(git.Repo("target"), git.Repo)
 
 
     def test_exception_handling(self):
@@ -75,7 +70,8 @@ class TestBoilerBuilder(unittest.TestCase):
         self.assertEqual(
             builder.structure, templates["python"].format("target")
         )
-        
+
+
 
 if __name__ == "__main__":
     pass
