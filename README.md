@@ -198,7 +198,7 @@ Node
 
 ## Version
 
-    0.3.0
+    0.3.1
 
 ## Contributing
 Please refer to [Here](CONTRIBUTING.md) for contributing.

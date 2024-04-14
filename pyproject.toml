@@ -11,7 +11,7 @@ exclude = ["img*"]
 
 [project]
 name = "Artec"
-version = "0.3.0"
+version = "0.3.1"
 authors = [
   { name="HushmKun", email="HushmKun@outlook.com" },
   { name="Link-", email="bsm.dgdy@gmail.com" },
@@ -26,6 +26,7 @@ classifiers = [
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Build Tools"
       ]
+      
 dependencies = [
     "GitPython"
 ]

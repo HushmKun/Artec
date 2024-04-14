@@ -6,9 +6,10 @@ import json
 import os
 from pathlib import Path
 from . import exceptions as ex
-from . import templates as temps
+from .temp import *
 from . import repo 
 from . import logger 
+
 
 class boiler_builder:
     def __init__(
@@ -29,13 +30,13 @@ class boiler_builder:
 
     def _source_temp(self, template) -> list[dict[str, str]]:
         try:
-            if template in temps.templates:
-                structure = temps.templates[template].format(self.target)
+            if template in templates:
+                structure = format_project_structure(templates[template], self.target)
             else:
                 raise ex.InValidTemplate()
 
         except ex.InValidTemplate:
-            structure = temps.templates["python"].format(self.target)
+            structure = format_project_structure(templates["python"], self.target)
         return structure
 
     def _source(self, source) -> list[dict[str, str]]:
@@ -44,33 +45,30 @@ class boiler_builder:
                 raise ex.NoSource()
             if os.path.isfile(source) and source.endswith(".json"):
                 with open(source, "rt", encoding="utf-8") as file_data:
-                    structure = temps.static_list(json.load(file_data)).format(
+                    structure = format_project_structure(json.load(file_data),
                         self.target
                     )
             else:
                 raise ex.NotJsonFile()
 
         except Exception:
-            structure = temps.templates["python"].format(self.target)
+            structure = format_project_structure(templates["python"], self.target)
 
         return structure
 
     def build(self):
         print("> Creating folder structure: {}\n".format(self.target))
 
-        for entry in self.structure:
-            for _type, name in entry.items():
-                try:
-                    joined = Path(os.path.join(self.target, name))
-                    if "folder" in _type:
-                        self._make_folder(joined)
-                    elif "file" in _type:
-                        self._make_file(joined)
-                    else:
-                        raise ex.NotValidJson()
-                    print("Created: %s" % joined)
-                except Exception:
-                    pass
+        for folder in self.structure['folders']:
+            folder_path = os.path.join(self.target, folder)
+            self._make_folder(folder_path)
+            print("Created: {}".format(folder_path))
+
+        for file_path in self.structure['files']:
+            file_path = os.path.join(self.target, file_path)
+            self._make_file(file_path)
+            print("Created: {}".format(file_path))
+
         print()
 
         if self.git:
@@ -83,7 +81,6 @@ class boiler_builder:
 
     def _make_file(self, path):
         """Create an empty file in a given directory"""
-        path.parent.mkdir(parents=True, exist_ok=True)
         open(path, "a").close()
 
     def _make_folder(self, path):

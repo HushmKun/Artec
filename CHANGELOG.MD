@@ -28,6 +28,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unused normalize.css file
 - Identical links assigned in each translation file -->
 
+## [0.3.1] - 2024-04-14
+
+### Added
+- Easier way to add templates.
+- New templates : Data Science
+
+### Fixed
+- Error on listing templates.
+
+### Changed
+- Refactoring to introduce the TUI (interactive mode)
+
+
 ## [0.3.0] - 2023-08-05
 
 ### Added
