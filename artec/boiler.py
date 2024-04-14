@@ -32,6 +32,7 @@ class boiler_builder:
         try:
             if template in templates:
                 structure = format_project_structure(templates[template], self.target)
+
             else:
                 raise ex.InValidTemplate()
 

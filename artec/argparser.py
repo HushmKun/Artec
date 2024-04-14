@@ -40,7 +40,7 @@ class Parser(ArgumentParser):
 
     def setup(self):
         group = self.add_mutually_exclusive_group()
-
+        
         group.add_argument(
             "-s",
             "--source-file",
@@ -57,6 +57,7 @@ class Parser(ArgumentParser):
             help="Uses ready-made templates.",
             required=False,
         )
+
 
         self.add_argument(
             "-o",

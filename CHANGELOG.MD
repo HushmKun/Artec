@@ -84,6 +84,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -  Improved error reporting 
 
 ### Fixed
+
 - Fixed Issue [#8](https://github.com/HushmKun/Artec/issues/8)
 - Fixed error building structure if the source starts with a file.
 
