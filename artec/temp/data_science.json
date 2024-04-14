@@ -1,0 +1,38 @@
+{
+    "folders": [
+        "data",
+        "data/external",
+        "data/raw",
+        "data/processed",
+        "data/interim",
+        "docs",
+        "models",
+        "notebooks",
+        "refrences",
+        "reports",
+        "reports/figures",
+        "src",
+        "src/data",
+        "src/features",
+        "src/models",
+        "src/visualization"
+    ], 
+    "files": [
+        "docs/Makefile",
+        "docs/commands.rst",
+        "docs/conf.py",
+        "docs/getting-started.rst",
+        "docs/index.rst",
+        "docs/make.bat",
+        "src/__init__.py",
+        ".env",
+        ".gitignore",
+        "README.md",
+        "LICENSE",
+        "Makefile",
+        "requirements.txt",
+        "setup.py",
+        "tox.ini",
+        "test_environment.py"
+    ]
+}

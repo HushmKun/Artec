@@ -3,7 +3,8 @@ import json
 import git
 from pathlib import Path
 from artec.boiler import boiler_builder
-from artec.templates import static_list, templates
+
+from artec.temp import *
 
 VAILD_JSON = Path("./test/resources/structure.json")
 INVAILD_JSON = Path("./test/resources/structure.txt")
@@ -15,19 +16,19 @@ class TestBoilerBuilder(unittest.TestCase):
             source="structure.json", target="target"
         )
         self.assertEqual(builder.target, "target")
-        self.assertIsInstance(builder.structure, list)
+        self.assertIsInstance(builder.structure, dict)
 
     def test_source_temp(self):
         builder = boiler_builder(
             template="python", target="target"
         )
         self.assertEqual(
-            builder.structure, templates["python"].format("target")
+            builder.structure, format_project_structure(templates["python"], "target")
         )
 
     def test_source(self):
         with open(VAILD_JSON, "rt", encoding="utf-8") as file_data:
-            structure = static_list(json.load(file_data)).format("target")
+            structure = format_project_structure(json.load(file_data),"target")
         builder = boiler_builder(
             source=VAILD_JSON, target="target"
         )
@@ -56,19 +57,19 @@ class TestBoilerBuilder(unittest.TestCase):
             source=INVAILD_JSON, target="target"
         )
         self.assertEqual(
-            builder.structure, templates["python"].format("target")
+            builder.structure, format_project_structure(templates["python"],"target")
         )
 
         builder = boiler_builder(
             template="invalid", target="target"
         )
         self.assertEqual(
-            builder.structure, templates["python"].format("target")
+            builder.structure, format_project_structure(templates["python"],"target")
         )
 
         builder = boiler_builder(target="target")
         self.assertEqual(
-            builder.structure, templates["python"].format("target")
+            builder.structure, format_project_structure(templates["python"],"target")
         )
 
 

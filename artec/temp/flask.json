@@ -1,0 +1,34 @@
+{
+    "folders": [
+        "{}", 
+        "{}/templates", 
+        "{}/templates/auth",
+        "{}/blog", 
+        "{}/static",
+        "test"
+        ], 
+    "files": [
+        "{}/__init__.py",
+        "{}/db.py",
+        "{}/schema.py",
+        "{}/auth.py",
+        "{}/blog.py",
+        "{}/templates/base.html",
+        "{}/templates/auth/login.html",
+        "{}/templates/auth/register.html",
+        "{}/blog/create.html",
+        "{}/blog/index.html",
+        "{}/blog/update.html",
+        "{}/static/style.css",
+        "test/__init__.py",
+        "test/conftest.py",
+        "test/data.sql",
+        "test/test_db.py",
+        "test/test_auth.py",
+        "test/test_blog.py",
+        "README.md",
+        "LICENSE",
+        "setup.py",
+        "pyproject.toml"
+    ]
+}

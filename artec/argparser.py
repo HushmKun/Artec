@@ -7,7 +7,7 @@ from argparse import (
     RawTextHelpFormatter,
     _VersionAction,
 )
-from .templates import templates
+from .temp import *
 import sys
 
 
@@ -15,10 +15,7 @@ class list_templates(_VersionAction):
     def __call__(self, parser: ArgumentParser, *args, **kwargs) -> None:
         formatter = parser._get_formatter()
         formatter.add_text(
-            "".join(
-                "Available templates\n\n",
-                "\n".join([f"> {key.title()}\t" for key in templates.keys()]),
-            )
+            list_available_templates()
         )
         parser._print_message(formatter.format_help(), sys.stdout)
         parser.exit()
@@ -43,6 +40,7 @@ class Parser(ArgumentParser):
 
     def setup(self):
         group = self.add_mutually_exclusive_group()
+        
         group.add_argument(
             "-s",
             "--source-file",
@@ -60,13 +58,21 @@ class Parser(ArgumentParser):
             required=False,
         )
 
+
         self.add_argument(
             "-o",
             "--output-directory",
             dest="target",
             help="Target output path where the structure will be created",
             type=str,
-            required=True,
+        )
+
+        self.add_argument(
+            "-i",
+            "--interactuve",
+            dest="interactive",
+            help="Runs artec in interactive mode.",
+            action="store_true",
         )
 
         self.add_argument(
@@ -107,7 +113,15 @@ class Parser(ArgumentParser):
 def main_args(appVersion) -> Namespace:
     parser = Parser(appVersion)
     parser.setup()
-    return parser.parse_args()
+    args = parser.parse_args()
+
+    if args.interactive:
+        print("Running Artec in interactive mode ....")  
+    else:
+        if not args.target:
+            parser.error("The '-o' argument is required when not in interactive mode.")
+
+    return args
 
 
 if __name__ == "__main__":

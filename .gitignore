@@ -73,5 +73,3 @@ venv/
 # vscodium
 *vscode/
 
-# JetBrains
-.idea/

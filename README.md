@@ -23,17 +23,21 @@ Create a JSON file to match the folder structure you desire
 $ vim structure.json 
     
 # Paste the below into your file and modify as you desire
-[
-    {"folder": "{}"},           # Use '{}' to be replaced with project name.
-    {"file": "{}/__init__.py"},
-    {"folder": "test"},
-    {"file": "test/__init__.py"},
-    {"file": "README.md"},
-    {"file": "LICENSE"},
-    {"file": "setup.py"},
-    {"file": "setup.cfg"},
-    {"file": "pyproject.toml"},
-]
+{
+    "folders": [
+        "{}",
+        "test"
+    ], 
+    "files": [
+        "{}/__init__.py",
+        "test/__init__.py",
+        "README.md",
+        "LICENSE",
+        "setup.py",
+        "pyproject.toml"
+    ]
+}
+
 ```
 How to execute
 ```
@@ -64,141 +68,14 @@ Examples:
 ```
 
 ## Templates
-<details>
-<summary> Python </summary>
-
-Project Named Artec 
-```
-artec
-├── artec
-│   └── __main__.py
-├── test
-│   └── __init__.py
-├── LICENSE
-├── pyproject.toml
-├── README.md
-├── setup.cfg
-└── setup.py
- 
-2 directories, 7 files
-```
-</details>
-
-<details>
-<summary> Flask </summary>
-
-Project Named flaskr 
-```
-flaskr
-.
-├── flaskr
-│   ├── auth.py
-│   ├── blog
-│   │   ├── create.html
-│   │   ├── index.html
-│   │   └── update.html
-│   ├── blog.py
-│   ├── db.py
-│   ├── __init__.py
-│   ├── schema.py
-│   ├── static
-│   │   └── style.css
-│   └── templates
-│       ├── auth
-│       │   ├── login.html
-│       │   └── register.html
-│       └── base.html
-├── LICENSE
-├── pyproject.toml
-├── README.md
-├── setup.py
-└── test
-    ├── conftest.py
-    ├── data.sql
-    ├── __init__.py
-    ├── test_auth.py
-    ├── test_blog.py
-    └── test_db.py
-
-7 directories, 22 files
-```
-</details>
-<details>
-<summary> Node.Js </summary>
-
-Project Named Node 
-```
-Node
-├── LICENSE
-├── package.json
-├── package-lock.json
-├── README.md
-└── src
-    ├── api
-    │   ├── controllers
-    │   │   └── user
-    │   │       ├── auth
-    │   │       │   ├── forgot-password.js
-    │   │       │   ├── login.js
-    │   │       │   ├── logout.js
-    │   │       │   ├── refresh-token.js
-    │   │       │   ├── register.js
-    │   │       │   ├── send-verification-code.js
-    │   │       │   └── verify-email.js
-    │   │       ├── delete-user.js
-    │   │       ├── edit
-    │   │       │   ├── change-password.js
-    │   │       │   └── edit-user.js
-    │   │       ├── get-user.js
-    │   │       └── index.js
-    │   ├── middlewares
-    │   │   ├── auth
-    │   │   │   ├── check-auth.js
-    │   │   │   └── check-authority.js
-    │   │   ├── image-upload.js
-    │   │   ├── index.js
-    │   │   ├── object-id-control.js
-    │   │   └── rate-limiter.js
-    │   ├── routes
-    │   │   ├── index.js
-    │   │   └── user.js
-    │   └── validators
-    │       ├── index.js
-    │       └── user.validator.js
-    ├── app.js
-    ├── config
-    │   └── index.js
-    ├── loaders
-    │   ├── express.js
-    │   ├── index.js
-    │   └── mongoose.js
-    ├── models
-    │   ├── index.js
-    │   ├── log.js
-    │   ├── token.js
-    │   └── user.js
-    └── utils
-        ├── helpers
-        │   ├── error-helper.js
-        │   ├── generate-random-code.js
-        │   ├── ip-helper.js
-        │   ├── jwt-token-helper.js
-        │   └── local-text-helper.js
-        ├── index.js
-        ├── lang
-        │   ├── en.json
-        │   ├── get-text.json
-        │   └── tr.json
-        ├── logger.js
-        └── send-code-to-email.js
-
-17 directories, 46 files
-```
-</details>
+- Python
+- Flask 
+- Node.Js
+- Data_Science
 
 ## Version
 
-    0.3.0
+    0.3.1
 
 ## Contributing
 Please refer to [Here](CONTRIBUTING.md) for contributing.
